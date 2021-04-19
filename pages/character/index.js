@@ -1,8 +1,10 @@
 import buildClient from "../../api/buildClient";
+import { useRouter } from 'next/router';
 
 const CoolThings = ({ character }) => {
   const { name, birth_year } = character;
-
+  const router = useRouter()
+  
   if (!character) return <div>loading...</div>;
   if (character.detail) {
     console.log("Error, character not found. Please contact website admin");
@@ -21,6 +23,10 @@ const CoolThings = ({ character }) => {
       <br />
       <h3>Name: {name}</h3>
       <h3>DOB: {birth_year}</h3>
+      <br />
+      <button onClick={() => router.back()}>Go Back</button>
+      <br />
+      <button onClick={() => router.reload()}>Get Another Character</button>
     </div>
   );
 };
