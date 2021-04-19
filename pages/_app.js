@@ -6,8 +6,8 @@ function MyApp({ Component, pageProps }) {
 }
 
 MyApp.getInitialProps = async (appContext) => {
+	console.log("appContext", appContext)
 	const client = buildClient(appContext.ctx);
-
 	let pageProps = {};
 	//handle undefined
 	if (appContext.Component.getInitialProps) {
