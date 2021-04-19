@@ -1,17 +1,11 @@
-import React from "react";
-
-const CoolThings = ({ show, setShow, character }) => {
+const CoolThings = ({character: {name, birth_year}}) => {
 	return (
 		<div>
 			<br/>
 			Character Details
 			<br/>
-			<h1>NAME HERE</h1>
-			<h2>DOB HERE</h2>
-			<h3>{character?.name}</h3>
-			{/* <h1>{character.name}</h1>
-			<h2>Born: {birth_year}</h2> */}
-
+			<h3>{name}</h3>
+			<h3>{birth_year}</h3>
 		</div>
 	);
 };
