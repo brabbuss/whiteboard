@@ -1,13 +1,17 @@
 import React from "react";
-import axios from "axios";
 
-const CoolThings = ({ show, setShow }) => {
+const CoolThings = ({ show, setShow, character }) => {
 	return (
 		<div>
-			<h1>{character.name}</h1>
-			<h2>Born: {birth_year}</h2>
+			<br/>
+			Character Details
+			<br/>
+			<h1>NAME HERE</h1>
+			<h2>DOB HERE</h2>
+			<h3>{character?.name}</h3>
+			{/* <h1>{character.name}</h1>
+			<h2>Born: {birth_year}</h2> */}
 
-			{/* TODO: put a hide button here. */}
 		</div>
 	);
 };

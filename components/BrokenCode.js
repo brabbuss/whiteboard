@@ -1,36 +1,42 @@
-import React, { useState } from 'react'
-import CoolThings from './CoolThings'
+import React, { useState } from "react";
+import CoolThings from "./CoolThings";
 
-const BrokenCode = (props) => {
-
-  const [show, setshow] = useState(false)
-  const [value, setValue] = useState(0)
-
-  const updateValue = (e) => {
-    setValue(e.target.value)
-  }
+const BrokenCode = ({ name, handleChange }) => {
+  const [show, setShow] = useState(false);
+  const [value, setValue] = useState("");
 
   return (
     <div>
-      <h1>Hi {name}</h1>
       <h3>Welcome to the Ample Coding Challenge</h3>
-
-      <button onClick={show(!show)}>
-        Show More
-      </button>
-
-      {show ? (
-        <p>Congrats! You got me to show!</p>
-        <input value={value} onChange={(e) => updateValue(e)} placeholder="0" />
-        <CoolThings show={show} setShow={setShow} />
-      ) : (
-        <p>Hmmm. Something is supposed to be here.</p>
+      <br />
+      {!name && (
+        <div>
+          <input
+            value={value}
+            onChange={e => setValue(e.target.value)}
+            placeholder="Enter your name"
+          />
+          <button onClick={() => handleChange(value)}>Submit</button>
+        </div>
+      )}
+      {name && (
+        <div>
+          <h1>Hi {name}</h1>
+          <br />
+          <button onClick={() => setShow(!show)}>
+            {show ? "Hide Info" : "Get random character info"}
+          </button>
+        </div>
       )}
 
-
-
+      {show && (
+        <section>
+          <br />
+          <CoolThings show={show} setShow={setShow} />
+        </section>
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default BrokenCode
+export default BrokenCode;
