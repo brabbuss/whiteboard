@@ -1,7 +1,25 @@
-import '../styles/globals.css'
+import buildClient from "../api/buildClient";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+	return <Component {...pageProps} />;
 }
 
-export default MyApp
+MyApp.getInitialProps = async (appContext) => {
+	const client = buildClient(appContext.ctx);
+
+	let pageProps = {};
+	//handle undefined
+	if (appContext.Component.getInitialProps) {
+		pageProps = await appContext.Component.getInitialProps(
+			appContext.ctx,
+			client
+		);
+	}
+
+	return {
+		pageProps,
+	};
+};
+
+export default MyApp;
