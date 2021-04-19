@@ -8,7 +8,7 @@ const CoolThings = ({ character }) => {
     console.log("Error, character not found. Please contact website admin");
     return (
       <div>
-        Failed to load, please check console for details or <br /> contact the
+        Failed to load, please refresh the page. <br /> If you continue to have issues, please contact the
         website administrator: scottbrabson@gmail.com
       </div>
     );
@@ -19,15 +19,15 @@ const CoolThings = ({ character }) => {
       <br />
       Character Details
       <br />
-      <h3>{name}</h3>
-      <h3>{birth_year}</h3>
+      <h3>Name: {name}</h3>
+      <h3>DOB: {birth_year}</h3>
     </div>
   );
 };
 
 CoolThings.getInitialProps = async (context, client) => {
   // 87 total IDs
-  const randomCharID = Math.floor(Math.random() * 88).toFixed(0);
+  const randomCharID = Math.floor(Math.random() * 87 + 1).toFixed(0);
   const res = await fetch(`https://swapi.py4e.com/api/people/${randomCharID}`);
   const data = await res.json();
   return { character: data };
